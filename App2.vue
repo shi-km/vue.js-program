@@ -46,3 +46,69 @@
 <style scoped>
 
 </style>
+
+
+
+
+
+
+
+<!-- where the javascript falls under -->
+<script setup>
+import {onMounted, ref} from 'vue';
+
+  const newtask = ref('');
+  const tasks   = ref([]);
+  const addTasks= () => {
+
+    if(newtask.value.trim() !== ''){
+       tasks.value.push(newtask.value);
+       newtask.value = '';
+    }
+  }
+   const deleteTask = (index) => {
+    tasks.value.splice(index,1);
+   }
+
+   onMounted(async() => {
+    try {
+
+      // const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+      // const data     = await response.json();
+      // tasks.value    = data.map((task) => task.title);
+       
+    } catch (error) {
+      console.log('Error Fetching tasks');
+    }
+   });
+</script>
+
+<template>
+
+  <h3>To do list:</h3> <br><br>
+  <!-- The form with action click and input -->
+    <form @submit.prevent="addTasks">
+      <label for="">To Do List: </label>
+      <input type="text" id="input" name="" v-model= "newtask">
+       <button id="blue">Add Task</button>
+    </form>
+      
+  <ul>
+    <li v-for="(task, index) in tasks" :key="tasks">
+     <span> {{ task }}</span>
+    <button @click="deleteTask(index)" id="delete">X</button>
+    </li>
+  </ul>
+</template>
+
+
+<style scoped>
+ #delete{
+  color: red;
+ }
+ #blue{
+  background-color: lawngreen;
+  color:black;
+ }
+</style>
+  
