@@ -1,3 +1,14 @@
+<script setup>
+import Navbar from '@/components/Navbar.vue';
+import Hero from '@/components/Hero.vue';
+import HomeCards from '@/components/HomeCards.vue';
+import JobListings from '@/components/JobListings.vue';
+</script>
+
 <template>
-  <h1 class="text-5xl underline">vue Jobs</h1>
+  <Navbar/>
+  <Hero/>
+  <HomeCards/>
+  <JobListings :limit ="3"/>
+
 </template>
