@@ -29,6 +29,7 @@ const jobs = ref(jobData);
       </div>
   </section>
 
+  <!-- view all jobs button -->
   <section v-if="showButton" class="m-auto max-w-lg my-10 px-6">
       <a
         href="/jobs"
